@@ -7,7 +7,7 @@
         <script src="mermaid.min.js"></script>
     </head>
     <body style="height:100%">
-        <div class="mermaid" style="height:500px;">
+        <div class="mermaid" style="height:900px;">
 classDiagram
 Apply <|-- Applicative
 Apply <|-- Bind
@@ -25,9 +25,41 @@ EuclideanRing <|-- Field
 CommutativeRing <|-- EuclideanRing
 Ring <|-- Semiring
 Semigroup <|-- Monoid
-Semigroupoid <|-- Ord
+Semigroupoid <|-- Category
+
+Semigroupoid : compose :: forall b c d. a c d -> a b c -> a b d
 Eq <|-- Ord
+Eq : eq :: a -> a -> Boolean
+Ord : compare :: a -> a -> Ordering
+Category : id :: forall t. a t t
+Semigroup : append :: a -> a -> a
+Monoid :  mempty :: m
+
+Functor : map :: forall a b. (a -> b) -> f a -> f b
+Foldable : foldMap :: forall a m. Monoid m => (a -> m) -> f a -> m
+Foldable : foldl :: forall a b. (b -> a -> b) -> b -> f a -> b
+Foldable : foldr :: forall a b. (a -> b -> b) -> b -> f a -> b
+Traversable : sequence :: forall a m. Applicative m => t (m a) -> m (t a)
+Traversable : traverse :: forall a b m. Applicative m => (a -> m b) -> t a -> m (t b)
+
+Alt : alt :: forall a. f a -> f a -> f a
+Plus : empty :: forall a. f a
+Apply : apply :: forall a b. f (a -> b) -> f a -> f b
+Applicative :  pure :: forall a. a -> f a
+Bind : bind :: forall a b. m a -> (a -> m b) -> m b
+
+Ring :  sub :: a -> a -> a
+EuclideanRing : mod :: a -> a -> a
+EuclideanRing : div :: a -> a -> a
+EuclideanRing : degree :: a -> Int
+
+Semiring : one :: a
+Semiring : mul :: a -> a -> a
+Semiring : zero :: a
+Semiring : add :: a -> a -> a
         </div>
     </body>
-    <script>mermaid.initialize({startOnLoad:true});</script>
+<script>
+mermaid.initialize({startOnLoad:true});
+</script>
 </html>
