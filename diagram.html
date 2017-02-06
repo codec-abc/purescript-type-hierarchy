@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 : Hello World Example</title>
+        <link rel="stylesheet" href="mermaid.forest.css"/>
+        <script src="mermaid.min.js"></script>
+    </head>
+    <body style="height:100%">
+        <div class="mermaid" style="height:500px;">
+classDiagram
+Apply <|-- Applicative
+Apply <|-- Bind
+Bind <|-- Monad
+Applicative <|-- Monad
+Monad <|-- MonadZero
+MonadZero <|-- MonadPlus
+Alternative <|-- MonadZero
+Plus <|-- Alternative
+Alt <|-- Plus
+Functor <|-- Alt
+Functor <|-- Traversable
+Foldable <|-- Traversable
+EuclideanRing <|-- Field
+CommutativeRing <|-- EuclideanRing
+Ring <|-- Semiring
+Semigroup <|-- Monoid
+Semigroupoid <|-- Ord
+Eq <|-- Ord
+        </div>
+    </body>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+</html>
